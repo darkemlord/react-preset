@@ -4,6 +4,7 @@
   "description": "mongo, express and graphql server",
   "main": "index.js",
   "author": "emanuel caro",
+  "type": "module",
   "scripts":{
     "dev": "node index.js"
   },
