@@ -1,9 +1,9 @@
 const express = require('express');
 const User = require('../models/Users')
 
-const loginRoutes = express.Router();
+const signInRoutes = express.Router();
 
-loginRoutes.post('/', async (req, res) => {
+signInRoutes.post('/', async (req, res) => {
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
@@ -17,4 +17,4 @@ loginRoutes.post('/', async (req, res) => {
   }
 })
 
-module.exports = loginRoutes;
+module.exports = signInRoutes;

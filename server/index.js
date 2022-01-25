@@ -1,5 +1,5 @@
 const express = require('express');
-const loginRoutes = require('./routes/login');
+const signInRoutes = require('./routes/signIn');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -8,7 +8,7 @@ dotenv.config({ path: ".env" })
 const app = express();
 app.use(cors())
 app.use(express.json())
-app.use('/login', loginRoutes)
+app.use('/signin', signInRoutes)
 
 mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
