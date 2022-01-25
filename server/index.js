@@ -6,9 +6,9 @@ const cors = require('cors');
 
 dotenv.config({ path: ".env" })
 const app = express();
-app.use(cors())
-app.use(express.json())
-app.use('/signin', signInRoutes)
+app.use(cors());
+app.use(express.json());
+app.use('/signin', signInRoutes);
 
 mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
@@ -22,4 +22,4 @@ mongoose.connect(process.env.MONGO_DB, {
       console.log(`server running at http://localhost:4000`)
     })
   }
-})
+});
