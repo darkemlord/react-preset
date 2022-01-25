@@ -3,6 +3,10 @@ const User = require('../models/Users');
 const bcrypt = require('bcrypt')
 
 const userRoutes = express.Router();
+
+userRoutes.get('/', (req, res) => {
+  res.send('hello papis')
+})
 //signIn route
 userRoutes.post('/signin', async (req, res) => {
   const password = req.body.password;
@@ -22,8 +26,8 @@ userRoutes.post('/signin', async (req, res) => {
 
 //login route
 
-userRoutes.post('/login', async (req, res) => {
-  res.send('login')
+userRoutes.post('/login', (req, res) => {
+  console.log('intentando acceder')
 })
 
 module.exports = userRoutes;
