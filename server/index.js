@@ -9,8 +9,6 @@ const app = express();
 app.use(cors())
 app.use('/login', loginRoutes)
 
-
-
 mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
