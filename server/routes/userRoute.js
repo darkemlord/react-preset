@@ -22,4 +22,8 @@ userRoutes.post('/signin', async (req, res) => {
 
 //login route
 
+userRoutes.post('/login', async (req, res) => {
+  res.send('login')
+})
+
 module.exports = userRoutes;
