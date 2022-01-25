@@ -7,6 +7,7 @@ const cors = require('cors');
 dotenv.config({ path: ".env" })
 const app = express();
 app.use(cors())
+app.use(express.json())
 app.use('/login', loginRoutes)
 
 mongoose.connect(process.env.MONGO_DB, {
