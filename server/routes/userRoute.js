@@ -4,9 +4,6 @@ const bcrypt = require('bcrypt')
 
 const userRoutes = express.Router();
 
-userRoutes.get('/', (req, res) => {
-  res.send('hello papis')
-})
 //signIn route
 userRoutes.post('/signin', async (req, res) => {
   const password = req.body.password;
