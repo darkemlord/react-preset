@@ -17,7 +17,7 @@ userRoutes.post('/signin', async (req, res) => {
     const saveUser = await user.save();
     res.json(saveUser)
   } catch(error) {
-    res.json({ message: error })
+    res.json({ message: error, details: 'User or Email already in use' })
   }
 })
 
