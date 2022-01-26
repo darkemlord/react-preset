@@ -1,9 +1,12 @@
 const express = require('express');
 const User = require('../models/Users');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
+dotenv.config({ path: ".env" })
 const userRoutes = express.Router();
-
+const JWT_SECRET = process.env.JWT_SEC;
 //signIn route
 userRoutes.post('/signin', async (req, res) => {
   const password = req.body.password;
@@ -34,8 +37,14 @@ userRoutes.post('/login', async (req, res) => {
   }
 
   if (await bcrypt.compare(password, logUser.password)) {
+    //creating token
+    const token = jwt.sign({
+      id: logUser._id,
+      username: logUser.userName,
+      email: logUser.email
+    }, JWT_SECRET)
 
-    return res.json( {status: 'ok', data: 'login succesfully'})
+    return res.json( {status: 'ok', data: token})
   }
   res.json({ status: 'error', error: 'invalid user or password' })
 })
