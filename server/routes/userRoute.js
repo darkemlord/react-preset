@@ -28,7 +28,7 @@ userRoutes.post('/signin', async (req, res) => {
 
 userRoutes.post('/login', async (req, res) => {
   // the values to get
-  const { userName, email, password } = req.body;
+  const { userName, password } = req.body;
   // finding in the database
   const logUser =  await User.findOne( { userName } ).lean();
 
