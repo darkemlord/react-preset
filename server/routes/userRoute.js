@@ -17,14 +17,27 @@ userRoutes.post('/signin', async (req, res) => {
     const saveUser = await user.save();
     res.json(saveUser)
   } catch(error) {
-    res.json({ message: error, details: 'User or Email already in use' })
+    res.json({ message: error, details:  `user already in use`})
   }
 })
 
 //login route
 
-userRoutes.post('/login', (req, res) => {
-  console.log('intentando acceder')
+userRoutes.post('/login', async (req, res) => {
+  // the values to get
+  const { userName, email, password } = req.body;
+  // finding in the database
+  const logUser =  await User.findOne( { userName } ).lean();
+
+  if (!logUser){
+    return res.json({ status: 'error', error: 'Invalid username or password'})
+  }
+
+  if (await bcrypt.compare(password, logUser.password)) {
+
+    return res.json( {status: 'ok', data: 'login succesfully'})
+  }
+  res.json({ status: 'error', error: 'invalid user or password' })
 })
 
 module.exports = userRoutes;
